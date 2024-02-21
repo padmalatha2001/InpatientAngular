@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="heading">
+        <p>
+           Billing Details
+        </p>
+    </div>
+    <form [formGroup]="patientForm" (ngSubmit)="submit()">
+        <!-- <label for="streetName"><b>Street Name</b></label>
+        <input type="text" formControlName="streetName" placeholder="Enter street name">
+        <div *ngIf="patientForm.get('streetName')?.invalid && patientForm.get('streetName')?.touched" class="text-danger">
+            Street Name is required
+        </div> -->
+
+        <label for="paidAmount"><b>Paid Amount</b></label>
+        <input type="number" formControlName="paidAmount" placeholder="Enter amount">
+        <div *ngIf="patientForm.get('paidAmount')?.invalid && patientForm.get('paidAmount')?.touched && patientForm.get('paidAmount>=1000')" class="text-danger">
+            Amount is required
+        </div>
+        <div *ngIf="patientForm.get('paidAmount')?.hasError('min') " class="text-danger">
+            Minimum amount is 500.
+          </div>
+        <label for="bedAllocationId"><b>Bed No</b></label>
+        <input type="number" formControlName="bedAllocationId" placeholder="Enter BedNo">
+        <div *ngIf="patientForm.get('bedAllocationId')?.invalid && patientForm.get('bedAllocationId')?.touched && patientForm.get('bedAllocationId')" class="text-danger">
+            BedNo is required
+        </div>
+
+        <label for="discount"><b>Discount</b></label>
+        <input type="number" formControlName="discount" placeholder="Enter discount">
+        <!-- <div *ngIf="patientForm.get('discount')?.invalid && patientForm.get('discount')?.touched" class="text-danger">
+        </div> -->
+
+        <label for="paymentStatus"><b>Status</b></label>
+        <input type="text" formControlName="paymentStatus" placeholder="Enter status">
+        <div *ngIf="patientForm.get('paymentStatus')?.invalid && patientForm.get('paymentStatus')?.touched" class="text-danger">
+            status is required
+        </div>
+
+        <button type="submit" [disabled]="patientForm.invalid">Submit</button>
+    </form>
+
+</div>

@@ -1,0 +1,27 @@
+.facility{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    height:700px;
+    width:300px;
+    background-color:teal;
+    color: white;
+}
+.facility a{
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    top:100px;
+}
+ul{
+    list-style-type:none;
+}
+a{
+    color: white;
+    font-size:25px;
+}
+ul li a{
+   position: relative; 
+   top:5px;
+}

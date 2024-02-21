@@ -1,0 +1,41 @@
+<p>enquiry works!</p>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+       <label for="">Enter PatientName</label>
+       <input type="text" [(ngModel)]="name">
+</div>
+</div>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+      <div class="row mb-3">
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-success me-2" (click)="getDetails()">Get Details</button>
+        </div>
+      </div>
+  
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>BedNo</th>
+            <th>RoomNo</th>
+            <th>WardName</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+         <tbody>
+            <tr *ngFor="let patient of patientDetails">
+                <td>{{ patient[0] }}</td> 
+                <td>{{ patient[1] }}</td> 
+                <td>{{ patient[2] }}</td> 
+                <td>{{ patient[3] }}</td> 
+                <td>{{ patient[4] }}</td> 
+                <td>{{ patient[5] }}</td> 
+              </tr>
+         </tbody>
+         </table>
+  </div>
+  </div>

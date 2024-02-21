@@ -1,0 +1,32 @@
+<div><a  class="btn btn-primary patient-link" routerLink="/addroom" style="position:relative;left:880px;top:70px;">New</a></div>
+    <form [formGroup]="roomFormtype">
+      <table border="2" class="table" style="position:relative;right:130px;background-color: white;color: black;width:1150px ;">
+        <tr>
+            <th>Id</th>
+            <th>RoomNo</th>
+            <th>RoomSharing</th>
+            <th>RoomPricing</th>
+            <th>RoomTypeId</th>
+            <th>wardId</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        <tr *ngFor="let c of combinedDetails">
+          <td>{{c.id}}</td>
+         <td>{{c.roomNo}}</td> 
+         <td>{{c.roomSharing}}</td>
+         <td>{{c.roomPrice}}</td>
+         <td>{{c.roomTypeId.name}}</td> 
+         <!-- <select [(ngModel)]="newRoom.roomTypeId">
+          <option *ngFor="let 
+          room of rooms" [ngValue]="room.id">{{c.roomTypeId.name}}</option>
+         </select> -->
+         <td>{{c.wardId.name}}-{{c.wardId.departmentId.name}}</td> 
+         <!-- <select [(ngModel)]="newWard.departmentId">
+          <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>
+        </select> -->
+         <!-- <td>{{c.ward.}}</td>   -->
+        <td><a class="btn btn-primary edit" routerLink="/editRoom/{{c.id}}" >Edit</a></td>
+        <!-- <td><a href="">Delete</a></td>  -->
+        </tr> 
+      </table>
+    </form>

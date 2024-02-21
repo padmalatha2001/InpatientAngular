@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="heading">
+        <p>
+          Room Details
+        </p>
+    </div>
+    <form [formGroup]="addRoomForm" (submit)="submit()">
+        <label for="roomNo"><b>Room No</b></label>
+        <input type="number" formControlName="roomNo" placeholder="Enter roomNo">
+        <label for="roomSharing"><b>RoomSharing</b></label>
+        <input type="number" formControlName="roomSharing" placeholder="Enter roomSharing">
+        <label for="roomPrice"><b>RoomPricing</b></label>
+        <input type="number" formControlName="roomPrice" placeholder="Enter roomPrice">
+        <label for="roomTypeId">Room Type</label>
+        <select id="roomTypeId" formControlName="roomTypeId" style="position:relative;width:340px;height:40px;border-radius:10px;">
+          <option *ngFor="let room of rooms" [value]="room.id">{{room.name}}</option>
+         </select>
+         <label for="wardId">Ward</label>
+         <select id="wardId" formControlName="wardId" style="position:relative;width:340px;height:40px;border-radius:10px;">
+           <option *ngFor="let ward of wards" [value]="ward.id">{{ward.name}} -{{ward.departmentId.name}}</option>
+          </select>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+

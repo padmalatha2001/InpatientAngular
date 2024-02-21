@@ -1,0 +1,97 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                  <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Registration Form</h3>
+                      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                          <div class="row">
+                              <div class="col-md-6 mb-4">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="firstName">First Name</label>
+                                      <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                                      <div *ngIf="registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched" class="text-danger">
+                                          First Name is required.
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 mb-4">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="lastName">Last Name</label>
+                                      <input type="text" id="lastName" class="form-control" formControlName="lastName">
+                                      <div *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched" class="text-danger">
+                                          Last Name is required.
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6 mb-4 d-flex align-items-center">
+                                  <div class="form-outline datepicker w-100">
+                                      <label for="age" class="form-label">PatientAge</label>
+                                      <input type="text" class="form-control" id="age" formControlName="patientAge">
+                                      <div *ngIf="registrationForm.get('age')?.invalid && registrationForm.get('age')?.touched" class="text-danger">
+                                          Age is required.
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 mb-4">
+                                  <h6 class="mb-2 pb-1">patientGender</h6>
+                                  <div class="form-check form-check-inline">
+                                      <label class="form-check-label" for="femaleGender">Female</label>
+                                      <input class="form-check-input" type="radio" name="patientGender" id="femaleGender" value="female" formControlName="patientGender">
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                      <label class="form-check-label" for="maleGender">Male</label>
+                                      <input class="form-check-input" type="radio" name="patientGender" id="maleGender" value="male" formControlName="patientGender">
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                      <label class="form-check-label" for="otherGender">Other</label>
+                                      <input class="form-check-input" type="radio" name="patientGender" id="otherGender" value="other" formControlName="patientGender">
+                                  </div>
+                                  <div *ngIf="registrationForm.get('gender')?.invalid && registrationForm.get('gender')?.touched" class="text-danger">
+                                      Gender is required.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="patientContactNo">Contact Number</label>
+                                      <input type="text" id="patientContactNo" class="form-control" formControlName="patientContactNo">
+                                      <div *ngIf="registrationForm.get('patientContactNo')?.invalid && registrationForm.get('patientContactNo')?.touched" class="text-danger">
+                                          Contact Number is required.
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" for="patientAlternteContactNo">Alternate Contact Number</label>
+                                      <input type="text" id="patientAlternteContactNo" class="form-control" formControlName="patientAlternteContactNo">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                      <label class="form-label" >Doctor Name</label>
+                                      <select class="form-select" formControlName="doctorBean">
+                                          <option *ngFor="let d of doctors" [ngValue]="d">{{ d.name }}</option>
+                                      </select>
+                                      <div *ngIf="registrationForm.get('doctorBean')?.invalid && registrationForm.get('doctorBean')?.touched" class="text-danger">
+                                          Please select a doctor.
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-4 pt-2">
+                              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

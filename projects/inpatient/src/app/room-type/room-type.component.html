@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <section class="gradient-custom">
+        <h2 class="fw-bold mb-2 text-uppercase" style="position:relative;top:10px;">Inpatient Management System</h2>
+        <button class="btn btn-outline-dark btn-lg px-5 text-white bg-dark" style="position:relative;bottom:40px;left:600px;" (click)="logout()">Logout</button>
+    </section>
+   
+    <p class="img" style=" background-image:url('https://www.laudclinic.com/wp-content/uploads/2020/05/InPatient-Services.jpg');">
+       
+    
+    </p> 
+    <div class="row">
+        <div class="col-4">                 
+            <app-facilities></app-facilities> 
+        </div>
+        <div class="col-8">
+            <router-outlet></router-outlet> 
+        </div>
+    </div>
+</div>
+ 
+
+

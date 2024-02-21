@@ -1,0 +1,53 @@
+<br>
+<br>
+<br><br><br><br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-11">
+              <div class="row mb-3">
+                <div class="col d-flex justify-content-end">
+                  <button class="btn btn-success me-2" (click)="addNewRow()" style="position:relative;right:350px;">Add Department</button>
+                </div>
+              </div>
+              <table class="table table-bordered" style="position:relative;width:550px;">
+                <thead>
+                  <tr>
+                    <th style="position:relative;width:40px;">ID</th>
+                    <th style="position:relative;width:90px;">Name</th>
+                    <th style="position:relative;width:50px;align-items: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let department of departments; let i = index">
+                    <tr>
+                      <td>{{ department.id }}</td>
+                      <td>
+                        <ng-container *ngIf="!isEditMode(i); else editMode">
+                          {{ department.name }}
+                        </ng-container>
+                        <ng-template #editMode>
+                          <input type="text" [(ngModel)]="department.name" (keyup.enter)="editDepartment(i)">
+                        </ng-template>
+                      </td>
+                      <td>
+                        <ng-container *ngIf="!isEditMode(i)">
+                          <button class="btn btn-primary me-2" (click)="toggleEditMode(i)">Edit</button>
+                        </ng-container>
+                        <!-- <button class="btn btn-danger" (click)="deleteDepartment(department?.id)">Delete</button> -->
+                      </td>
+                    </tr>
+                  </ng-container>
+                  <tr *ngIf="showNewRow">
+                    <td><input type="text" [(ngModel)]="newDepartment.id"></td>
+                    <td><input type="text" [(ngModel)]="newDepartment.name"></td>
+                    <td>
+                      <button class="btn btn-primary me-2" (click)="submitNewDepartment()">Submit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+

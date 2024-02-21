@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+    <div>
+      <label>Choose the Doctor</label>
+      <select name="" id=""  [(ngModel)]="doctorName">
+        <option>--Select---</option>
+        <option *ngFor="let doctor of doctors" [ngValue]="doctor.name">{{doctor.name}}</option>
+      </select>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-10">
+        <div class="row mb-3">
+          <div class="col d-flex justify-content-end">
+            <button class="btn btn-success me-2" (click)="getPatientsByDoctor()">Get Details</button>
+          </div>
+        </div>
+    
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>BedNo</th>
+              <th>RoomNo</th>
+              <th>WardName</th>
+              <th>Department</th>
+            </tr>
+          </thead>
+           <tbody>
+            <tr *ngFor="let row of patientDetails">
+              <td *ngFor="let value of row">{{ value }}</td>
+            </tr> 
+           </tbody>
+           </table>
+    </div>
+    </div>

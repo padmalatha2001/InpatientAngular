@@ -1,0 +1,71 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+      <div class="row mb-3">
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-success me-2" (click)="addNewRow()">Add Bed</button>
+        </div>
+      </div>
+      <table class="table table-borrdered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>BedNo</th>
+            <th>RoomNo</th>
+            <th>Status</th>
+            <th>Buttons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let bed of beds; let i = index">
+            <tr>
+              <td>{{ bed.id }}</td>
+              <ng-container *ngIf="!isEditMode(i); else editMode">
+
+              <td>{{ bed.bedNo }}</td>
+            </ng-container>
+            <ng-template #editMode>
+              <input type="text" [(ngModel)]="bed.bedNo" (keyup.enter)="editBed(i)">
+            </ng-template>
+
+              <td>
+                  {{bed.roomId?.roomNo}}
+              </td>
+              <td>{{ bed.status }}</td>
+              <td>
+                <ng-container *ngIf="!isEditMode(i)">
+                  <button class="btn btn-primary me-2" (click)="toggleEditMode(i)">Edit</button>
+                </ng-container>
+                  <button class="btn btn-danger me-2" (click)="deleteBed(bed?.id)">Delete</button>
+                
+              </td>
+              <!-- <td>
+                <ng-template #editMode>
+                  <input type="text" [(ngModel)]="bed.bedNo" (keyup.enter)="editBed(i)">
+                </ng-template>
+              </td> -->
+
+            </tr>
+          </ng-container>
+          <tr *ngIf="showNewRow">
+            <td><input type="text" [(ngModel)]="newBed.id"></td>
+            <td><input type="text" [(ngModel)]="newBed.bedNo"></td>
+            <td>
+              <select [(ngModel)]="newBed.roomId">
+                <option *ngFor="let room of rooms" [ngValue]="room">{{room.roomNo}}</option>
+              </select>
+            </td>
+
+            <td><input type="text" [(ngModel)]="newBed.status"></td>
+
+            <td>
+              <button class="btn btn-primary me-2" (click)="submitNewBed()">Submit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

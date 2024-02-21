@@ -1,0 +1,82 @@
+
+<!-- ward.component.html -->
+<div class="container-fluid">
+    <div class="row" style="position:relative;right:50px;top:20px ;">
+      <div class="col-0"></div>
+      <div class="col-12">
+        <div class="row mb-3">
+          <div class="col d-flex justify-content-end">
+            <button class="btn btn-success me-2" (click)="addNewWard()">Add Ward</button>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Capacity</th>
+              <th>Availability</th>
+              <th>Department</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let ward of wards; let i = index">
+              <tr>
+                <td>{{ ward.id }}</td>
+                <td>
+                  <ng-container *ngIf="!isEditMode(i); else editMode">
+                    {{ ward.name }}
+                  </ng-container>
+                  <ng-template #editMode>
+                    <input type="text" [(ngModel)]="ward.name" (keyup.enter)="saveWard(ward)">
+                  </ng-template>
+                </td>
+                <!-- <td>
+                  <ng-container *ngIf="!isEditMode(i); else editMode">
+                    {{ ward.capacity }}
+                  </ng-container>
+                  <ng-template #editMode>
+                    <input type="number" [(ngModel)]="ward.capacity" (keyup.enter)="saveWard(ward)">
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-container *ngIf="!isEditMode(i); else editMode">
+                    {{ ward.availability }}
+                  </ng-container>
+                  <ng-template #editMode>
+                    <input type="number" [(ngModel)]="ward.availability" (keyup.enter)="saveWard(ward)">
+                  </ng-template>
+                </td> -->
+                 <td>{{ ward.capacity }}</td>
+                <td>{{ ward.availability }}</td> 
+                <td>{{ ward.departmentId ? ward.departmentId.name : 'N/A'  }}</td>
+                <td>
+                  <ng-container *ngIf="!isEditMode(i)">
+                    <button class="btn btn-primary me-2" (click)="toggleEditMode(i)">Edit</button>
+                  </ng-container>
+                  <!-- <button class="btn btn-danger" (click)="deleteWard(ward.id)">Delete</button> -->
+                </td>
+              </tr>
+            </ng-container>
+            <tr *ngIf="showNewRow">
+                <td><input type="text" [(ngModel)]="newWard.id"></td>
+              <td><input type="text" [(ngModel)]="newWard.name"></td>
+              <td><input type="number" [(ngModel)]="newWard.capacity"></td>
+              <td><input type="number" [(ngModel)]="newWard.availability"></td>
+              <td>
+                <select [(ngModel)]="newWard.departmentId">
+                  <option *ngFor="let department of departments" [ngValue]="department">{{ department.name }}</option>
+                </select>
+                
+              </td>
+              <td>
+                <button class="btn btn-primary me-2" (click)="submitNewWard(newWard.id, newWard.name , newWard.departmentId )">Submit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
